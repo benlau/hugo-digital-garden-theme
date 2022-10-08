@@ -5,12 +5,14 @@
 <div class="container mt-5" style="max-width: 1000px;">
         <div class="row justify-content-center g-4">
             <div class="col-xs-12 col-sm-4">
+                {{ if (.Resources.ByType "image").GetMatch "*featured*" }}
                 {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
                 {{ $img = $img.Fit "400x500" }}
                 {{ with $img }}
                 <div class="text-center">
                     <img src="{{ .Permalink }}" class="rounded card-img-top" style="max-width: 250px;">
                 </div>
+                {{ end }}
                 {{ end }}
             </div>
             <div class="col-sm-7">

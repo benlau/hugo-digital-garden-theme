@@ -71,14 +71,16 @@
 				{{ end }}
 			</div>
 			<div class="col me-auto">
-				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+				<div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 g-4 mb-5">
 					{{ range ( where site.RegularPages "Section" "library" | first 3 ) }}
 					<div class="col">
 						<div class="card">
+							{{ if (.Resources.ByType "image").GetMatch "*featured*" }}
 							{{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
 							{{ $img = $img.Fit "350x500" }}
-							{{ with $img }}
+							{{ with $img }}							
 							<img src="{{ .Permalink }}" alt="{{ $.Title }}" class="card-img-top">
+							{{ end }}
 							{{ end }}
 							<div class="card-body">
 								<h5 class="card-title">{{ .Title }}</h5>
