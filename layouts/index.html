@@ -22,7 +22,7 @@
 			{{ if .Summary }} <p class="subheading">{{ .Summary }}</p> {{ end }}
 			{{ end }}
 			<div class="row row-cols-1 g-4 mb-5">
-				{{ range ( where site.RegularPages "Section" "garden" | first 6 ) }}
+				{{ range ( first 6 (where site.RegularPages "Section" "garden").ByLastmod.Reverse) }}
 				{{ partial "home_garden.html" . }}
 				{{ end }}
       		</div>
