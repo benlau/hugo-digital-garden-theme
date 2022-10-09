@@ -29,7 +29,9 @@
                 {{ end }}
             </div>
             {{ end }}
+            {{ if (.Resources.ByType "image").GetMatch "*featured*" }}
             <div class="col-lg-8 col-xl-7 ms-auto">
+            {{end}}
                 <div class="card-body">
                     {{ if .Summary | safeHTML | truncate 100}} 
                     <h4 class="card-title">{{ .Title }}</h4>
@@ -37,13 +39,10 @@
                     {{ else }}
                     <h4 class="card-title pb-3">{{ .Title }}</h4>
                     {{ end }}
-                    <p class="card-text">
-                        <figcaption class="blockquote-footer">
-                          {{ .Params.Author }}
-                        </figcaption>
-                      </p>
                 </div>
+            {{ if (.Resources.ByType "image").GetMatch "*featured*" }}
             </div>
+            {{end}}
         </div>
     </div>
 </div>
