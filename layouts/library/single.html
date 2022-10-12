@@ -34,6 +34,18 @@
         <div class="serif main-content p-5">
             {{ .Content | markdownify | safeHTML }}
         </div>
+
+        <div class="text-center pt-4">
+            {{ with .Params.backlinks }}
+            <hr class="dropdown-divider">            
+            {{ range sort . "weight" }}
+            <a href="{{ .href }}" role="button" class="btn btn-sm btn-link mx-2">
+                <i class="{{ .icon }} fs-5"></i>
+            {{ .text }}
+            </a>
+            {{ end }}
+            {{ end }}
+        </div>
     </div>
 
 </div>
