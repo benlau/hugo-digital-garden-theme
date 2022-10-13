@@ -297,6 +297,11 @@ a:hover {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.main-content img {
+  max-width: 760px;
+}
+
 .highlight {
   line-height: normal;
   font-size: medium;
