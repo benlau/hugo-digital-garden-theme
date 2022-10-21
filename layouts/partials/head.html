@@ -26,4 +26,19 @@
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
     <title>{{ $title }}</title>
     <meta name="description" content="{{ if .IsPage }}{{ .Summary }}{{ else }}{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ end }}{{ end }}">
+    
+    <meta property="og:title" content="{{ .Title }}"/>
+    <meta property="og:description" content="{{ .Summary }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ .Permalink }}"/>
+    {{ if (.Resources.ByType "image").GetMatch "*featured*" }}
+    {{ $img := (.Resources.ByType "image").GetMatch "*featured*" }}
+    <meta property="og:image" content="{{ .Permalink }}{{$img}}"/>
+    {{ else }}
+    <meta property="og:image" content="{{ .Site.BaseURL }}/img/ogimage.png"/>
+    <meta property="og:image:url" content="{{ .Site.BaseURL }}/img/ogimage.png"/>
+    <meta property="og:image:width" content="199"/>
+    <meta property="og:image:height" content="150"/>
+    {{ end }}
+
 </head>
