@@ -27,6 +27,15 @@
                     {{ else }}
                     <h4 class="card-title display-2 pb-3">{{ .Title }}</h4>
                     {{ end }}
+
+                    {{ with .Params.links }}
+                    {{ range sort . "weight" }}
+                    <a href="{{ .href }}" role="button" class="btn btn-sm btn-link mx-2" target="_blank">
+                        <i class="{{ .icon }} fs-5"></i>
+                    {{ .text }}
+                    </a>
+                    {{ end }}
+                    {{ end }}
             </div>
         </div>
 
