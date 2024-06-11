@@ -41,7 +41,9 @@
                 {{ end }}
                 {{ with .Params.garden_tags }}
                     {{ range . }}
-                    <span class="badge tag-badge">{{ . }}</span>
+                    <a href="/garden_tags/{{ . }}">
+                        <span class="badge tag-badge">{{ . }}</span>
+                    </a>
                     {{ end }}
                 {{ end }}
                 {{ with .Params.project_tags }}
