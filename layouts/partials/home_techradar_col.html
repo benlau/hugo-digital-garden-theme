@@ -1,0 +1,15 @@
+{{ $Title := .Scratch.Get "Title" }}
+{{ $Tag := .Scratch.Get "Tag" }}
+<div class="subheading">{{ $Title }}</div>
+<div class="d-flex flex-column gap-4">
+    {{ $filteredPages := slice }}
+    {{ range (where .Site.RegularPages "Section" "garden").ByLastmod.Reverse }}
+        {{ if in .Params.techradar_tags $Tag }}
+            {{ $filteredPages = $filteredPages | append . }}
+        {{ end }}
+    {{ end }}
+
+    {{ range (first 3 $filteredPages) }}
+        {{ partial "home_techradar.html" . }}
+    {{ end }}
+</div>

@@ -56,6 +56,49 @@
   		</div>
 	</div>
 
+	<!-- Tech Radar -->
+	<div class="container py-3">
+		<div class="row">
+			{{ with .Site.GetPage "section" "techradar" }}
+			<div class="pb-4">
+				<a class="heading fs-2" href="{{ .RelPermalink }}">{{ .Title }}</a>
+			</div>
+			{{ end }}
+		</div>
+		<div class="row mb-4">
+			<div class="col-lg-4">
+				{{ .Scratch.Set "Title" "Assess" }}
+				{{ .Scratch.Set "Tag" "assess" }}
+				{{ partial "home_techradar_col.html" . }}				
+			</div>
+			<div class="col-lg-4">
+				{{ .Scratch.Set "Title" "Trial" }}
+				{{ .Scratch.Set "Tag" "trial" }}
+				{{ partial "home_techradar_col.html" . }}
+			</div>
+			<div class="col-lg-4">
+				{{ .Scratch.Set "Title" "Adopt" }}
+				{{ .Scratch.Set "Tag" "adopt" }}
+				{{ partial "home_techradar_col.html" . }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4">
+				{{ .Scratch.Set "Title" "Hold" }}
+				{{ .Scratch.Set "Tag" "hold" }}
+				{{ partial "home_techradar_col.html" . }}
+			</div>
+
+			<div class="col-lg-4">
+				{{ .Scratch.Set "Title" "No-Go" }}
+				{{ .Scratch.Set "Tag" "no-go" }}
+				{{ partial "home_techradar_col.html" . }}
+			</div>
+
+		</div>
+	</div>
+
 	<!-- Library -->
 	<div class="container py-3">
 		<div class="row justify-content-between my-5">
@@ -66,7 +109,7 @@
 				</div>
 				{{ if .Summary }} <p class="subheading">{{ .Summary }}</p> {{ end }}
 				<div class="d-flex">
-					<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all books</a>
+					<a href="{{ .RelPermalink }}" role="button" class="btn btn-sm see-all">See all collection</a>
 				</div>
 				{{ end }}
 			</div>

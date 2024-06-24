@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+<!-- Title and summary -->
+<div class="container mb-4">
+    <div class="py-5 rounded-3">
+        <div class="container-fluid">
+            <h1 class="display-2 mb-4">{{ .Title }}</h1>
+            <p class="bio col-md-8 fs-4 serif">{{ .Summary }}</p>
+        </div>
+        <div class="py-1" style="padding-left: 12px;">
+            {{ partial "radar.html" }}
+        </div>
+    </div>
+</div>
+
+<!-- Tech Radar Post Cards -->
+<div class="container mb-4">
+    {{ .Scratch.Set "Title" "Assess - Observing" }}
+    {{ .Scratch.Set "Tag" "assess" }}
+    {{ partial "techradar_block.html" . }}	
+
+    {{ .Scratch.Set "Title" "Trial - Trying" }}
+    {{ .Scratch.Set "Tag" "trial" }}
+    {{ partial "techradar_block.html" . }}				
+
+    {{ .Scratch.Set "Title" "Adopt - Recommended" }}
+    {{ .Scratch.Set "Tag" "adopt" }}
+    {{ partial "techradar_block.html" . }}	
+
+    {{ .Scratch.Set "Title" "Hold - Hold off for now" }}
+    {{ .Scratch.Set "Tag" "hold" }}
+    {{ partial "techradar_block.html" . }}	
+
+    {{ .Scratch.Set "Title" "No-Go - Don't think about it" }}
+    {{ .Scratch.Set "Tag" "no-go" }}
+    {{ partial "techradar_block.html" . }}	    
+</div>
+
+{{ end }}

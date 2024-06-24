@@ -1,0 +1,19 @@
+{{ $Title := .Scratch.Get "Title" }}
+{{ $Tag := .Scratch.Get "Tag" }}
+
+<div class="row">
+    <div class="mb-2 fs-3"><b>{{ $Title }}</b></div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 mb-4">
+    {{ $filteredPages := slice }}
+    {{ range (where .Site.RegularPages "Section" "garden").ByLastmod.Reverse }}
+        {{ if in .Params.techradar_tags $Tag }}
+            {{ $filteredPages = $filteredPages | append . }}
+        {{ end }}
+    {{ end }}
+
+    {{ range $filteredPages }}
+        {{ partial "home_techradar.html" . }}
+    {{ end }}
+ </div>
