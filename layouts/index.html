@@ -74,28 +74,31 @@
 			<div class="col-lg-4">
 				{{ .Scratch.Set "Title" "Trial" }}
 				{{ .Scratch.Set "Tag" "trial" }}
+				{{ .Scratch.Set "Count" "2" }}
 				{{ partial "home_techradar_col.html" . }}
 			</div>
 			<div class="col-lg-4">
 				{{ .Scratch.Set "Title" "Adopt" }}
 				{{ .Scratch.Set "Tag" "adopt" }}
+				{{ .Scratch.Set "Count" "1" }}
 				{{ partial "home_techradar_col.html" . }}
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-lg-4">
-				{{ .Scratch.Set "Title" "Hold" }}
-				{{ .Scratch.Set "Tag" "hold" }}
-				{{ partial "home_techradar_col.html" . }}
-			</div>
-
-			<div class="col-lg-4">
 				{{ .Scratch.Set "Title" "No-Go" }}
 				{{ .Scratch.Set "Tag" "no-go" }}
+				{{ .Scratch.Set "Count" "1" }}
 				{{ partial "home_techradar_col.html" . }}
 			</div>
 
+			<div class="col-lg-8">
+				{{ .Scratch.Set "Title" "Hold" }}
+				{{ .Scratch.Set "Tag" "hold" }}
+				{{ .Scratch.Set "Count" "2" }}
+				{{ partial "home_techradar_row.html" . }}
+			</div>
 		</div>
 	</div>
 
