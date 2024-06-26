@@ -1,5 +1,8 @@
 {{ define "main" }}
 
+{{ .Scratch.Set "URL" (printf "%s%s" "joplin://x-callback-url/openNote?id="  .Params.joplinId) }}
+{{ partial "open_joplin_link.html" . }}
+
 <div class="container" style="max-width: 800px;">
     <div class="py-4 rounded-3">
         <div class="container-fluid py-2">

@@ -1,0 +1,16 @@
+{{ $URL := .Scratch.Get "URL" }}
+<script>
+document.addEventListener('keydown', function(event) {
+    // Check if the 'Cmd' key is pressed along with 'O'
+    if (event.metaKey && event.key === 'o') {
+        // Prevent the default action to stop any other behavior associated with Cmd+O
+        event.preventDefault();
+
+        // Specify the URL you want to open
+        const url = "{{ $URL }}";
+
+        // Open the URL in a new tab
+        location.href = url;
+    }
+});
+</script>

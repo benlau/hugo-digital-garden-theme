@@ -1,6 +1,7 @@
 {{ define "main" }}
 
-<!-- Title and summary -->
+{{ .Scratch.Set "URL" (printf "%s%s" "joplin://x-callback-url/openNote?id="  .Params.joplinId) }}
+{{ partial "open_joplin_link.html" . }}
 
 <div class="container mt-5" style="max-width: 1000px;">
         <div class="row justify-content-center g-4">
