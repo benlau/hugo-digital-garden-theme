@@ -1,8 +1,10 @@
 {{ $Title := .Scratch.Get "Title" }}
 {{ $Tag := .Scratch.Get "Tag" }}
+{{ $Summary := .Scratch.Get "Summary" }}
 
-<div class="row">
-    <div class="mb-2 fs-3"><b>{{ $Title }}</b></div>
+<div class="row mb-3">
+    <div class="fs-3"><b>{{ $Title }}</b></div>
+    <div class="fs-5">{{ $Summary }}</div>
 </div>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 mb-4">

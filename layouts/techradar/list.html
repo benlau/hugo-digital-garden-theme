@@ -15,24 +15,29 @@
 
 <!-- Tech Radar Post Cards -->
 <div class="container mb-4">
-    {{ .Scratch.Set "Title" "Assess - Observing" }}
+    {{ .Scratch.Set "Title" "Assess - Entered the radar" }}
     {{ .Scratch.Set "Tag" "assess" }}
+    {{ .Scratch.Set "Summary" "Interesting and let's try it" }}
     {{ partial "techradar_block.html" . }}	
 
     {{ .Scratch.Set "Title" "Trial - Trying" }}
     {{ .Scratch.Set "Tag" "trial" }}
+    {{ .Scratch.Set "Summary" "I am using in my work, but I don’t have confidence to recommend it yet" }}
     {{ partial "techradar_block.html" . }}				
 
     {{ .Scratch.Set "Title" "Adopt - Recommended" }}
     {{ .Scratch.Set "Tag" "adopt" }}
+    {{ .Scratch.Set "Summary" "I am quite happy to use it and would like to share it with you." }}
     {{ partial "techradar_block.html" . }}	
 
     {{ .Scratch.Set "Title" "Hold - Hold off for now" }}
     {{ .Scratch.Set "Tag" "hold" }}
+    {{ .Scratch.Set "Summary" "My interests have changed, or I am too busy to investigate" }}
     {{ partial "techradar_block.html" . }}	
 
     {{ .Scratch.Set "Title" "No-Go - Don't think about it" }}
     {{ .Scratch.Set "Tag" "no-go" }}
+    {{ .Scratch.Set "Summary" "I won't use it anymore and would recommend you not waste time on it either." }}
     {{ partial "techradar_block.html" . }}	    
 </div>
 

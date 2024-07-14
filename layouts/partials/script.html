@@ -6,3 +6,14 @@
 <script src="/js/isotope.js"></script>
 <script src="/js/mermaid.min.js"></script>
 <script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
+<script>
+var $grid = $('.blogposts').masonry({
+  itemSelector: '.grid-item',
+  percentPosition: true,
+  columnWidth: '.grid-sizer'
+});
+// layout Isotope after all images loaded
+$grid.imagesLoaded( function() {
+  $grid.masonry();
+});
+</script>

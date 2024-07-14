@@ -1,0 +1,15 @@
+{{ if in .Params.techradar_tags "adopt" }}
+<span class="radar-status"><a href="/techradar">Adopt 📡</a></span>
+{{ end }}
+{{ if in .Params.techradar_tags "assess" }}
+<span class="radar-status"><a href="/techradar">Assess 📡</a></span>
+{{ end }}
+{{ if in .Params.techradar_tags "trial" }}
+<span class="radar-status"><a href="/techradar">Trial 📡</a></span>
+{{ end }}
+{{ if in .Params.techradar_tags "hold" }}
+<span class="radar-status"><a href="/techradar">Hold 📡</a></span>
+{{ end }}
+{{ if in .Params.techradar_tags "no-go" }}
+<span class="radar-status"><a href="/techradar">Nogo 📡</a></span>
+{{ end }}

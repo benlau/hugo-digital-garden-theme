@@ -138,6 +138,12 @@ code {
   color: green;
   font-size: small;
 }
+.radar-status {
+  font-weight: lighter;
+  color: var(--grey);
+  font-size: small;
+  line-height: 1.6;
+}
 
 
 /********************* Navbar *********************/
