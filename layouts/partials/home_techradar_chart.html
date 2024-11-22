@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col text-center">
-            <div id="techradr-h"></div>
+            <div id="techradar-h" class="d-none d-md-block"></div>
+            <div id="techradar-v" class="d-md-none"></div>
         </div>
     </div>
 </div>
@@ -48,6 +49,19 @@ const positionH = [
     { angle: 0.05, radius: 0.1},
 ]
 
+const positionV = [
+    { angle: 0.64, radius: 0.6}, // adopt
+    { angle: 0.815, radius: 0.2},
+    { angle: 0.85, radius: 0.54},
+    { angle: 0.89, radius: 0.24}, // assess
+    { angle: 0.9, radius: 0.52}, // assess
+    { angle: 0.91, radius: 0.85}, // assess
+    { angle: 0.93, radius: 0.52}, // hold
+    { angle: 0.935, radius: 0.85},  // hold
+    { angle: 0.94, radius: 0.52},
+]
+
+
 const blipItemsH = [
     ...adoptItems,
     ...trialItems, 
@@ -58,6 +72,22 @@ const blipItemsH = [
     return {
         ...item,
         ...positionH[index],
+        onClick: () => {
+            window.location.href = item.link;
+        }
+    }
+});
+
+const blipItemsV = [
+    ...adoptItems,
+    ...trialItems, 
+    ...accessItems,
+    ...holdItems,
+    ...nogoItems,
+].map((item, index) => {
+    return {
+        ...item,
+        ...positionV[index],
         onClick: () => {
             window.location.href = item.link;
         }
@@ -95,9 +125,26 @@ document.addEventListener('DOMContentLoaded', function() {
       "AI & ML",
     ];
     config.blipFontSize = 12;
+    const configH = JSON.parse(JSON.stringify(config));
 
-    const techRadar = new TechRadar.TechRadar(blipItemsH, config);
-    // Render the Tech Radar
-    techRadar.render("#techradr-h");
+    const techRadarH = new TechRadar.TechRadar(blipItemsH, configH);
+    techRadarH.render("#techradar-h");
+
+    const configV = JSON.parse(JSON.stringify(config));
+
+    configV.canvasSize = {
+      width: 300,
+      height: 600,
+    };
+    configV.centerOffset = {
+      x: -100,
+      y: -320,
+    };
+    configV.statusLabelPosition = "down";
+    configV.blipFontSize = 14;
+
+    const techRadarV = new TechRadar.TechRadar(blipItemsV, configV);
+    techRadarV.render("#techradar-v");
+
 });
 </script>
