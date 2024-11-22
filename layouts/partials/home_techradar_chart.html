@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <div id="techradr-h"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+{{ .Scratch.Set "Tag" "assess" }}
+{{ .Scratch.Set "Count" "3" }}
+const accessItems = JSON.parse({{ partial "js_techradar_items" . }}).map(item => {
+    return {...item, category: "tech", status: "assess"}
+});
+{{ .Scratch.Set "Tag" "trial" }}
+{{ .Scratch.Set "Count" "2" }}
+const trialItems = JSON.parse({{ partial "js_techradar_items" . }}).map(item => {
+    return {...item, category: "tech", status: "trial"}
+});
+
+{{ .Scratch.Set "Tag" "adopt" }}
+{{ .Scratch.Set "Count" "1" }}
+const adoptItems = JSON.parse({{ partial "js_techradar_items" . }}).map(item => {
+    return {...item, category: "tech", status: "adopt"}
+});
+
+{{ .Scratch.Set "Tag" "no-go" }}
+{{ .Scratch.Set "Count" "1" }}
+const nogoItems = JSON.parse({{ partial "js_techradar_items" . }}).map(item => {
+    return {...item, category: "tech", status: "no-go"}
+});
+
+{{ .Scratch.Set "Tag" "hold" }}
+{{ .Scratch.Set "Count" "2" }}
+const holdItems = JSON.parse({{ partial "js_techradar_items" . }}).map(item => {
+    return {...item, category: "tech", status: "hold"}
+});
+
+const positionH = [
+    { angle: 0.7, radius: 0.3}, // adopt
+    { angle: 0.25, radius: 0.1},
+    { angle: 0.6, radius: 0.1},
+    { angle: 0.08, radius: 0.3}, // assess
+    { angle: 0.22, radius: 0.2},
+    { angle: 0.35, radius: 0.1},
+    { angle: 0.12, radius: 0.4}, // hold
+    { angle: 0.2, radius: 0.2},
+    { angle: 0.05, radius: 0.1},
+]
+
+const blipItemsH = [
+    ...adoptItems,
+    ...trialItems, 
+    ...accessItems,
+    ...holdItems,
+    ...nogoItems,
+].map((item, index) => {
+    return {
+        ...item,
+        ...positionH[index],
+        onClick: () => {
+            window.location.href = item.link;
+        }
+    }
+});
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const config = TechRadar.TechRadar.getDefaultConfig();
+    config.canvasSize = {
+      width: 600,
+      height: 200,
+    };
+    config.scaleMode = "scaleToFit";
+    config.statuses = [
+      { name: "no-go", color: "#d8e5ee", length: 110 },
+      { name: "hold", color: "#c1d8e8", length: 110 },
+      { name: "assess", color: "#afcadd", length: 110 },
+      { name: "trial", color: "#9ebcd6", length: 110 },
+      { name: "adopt", color: "#8eafd2", length: 140 },
+    ];
+    config.statusLabelPosition = "right";
+    config.centerOffset = {
+      x: -300,
+      y: -70,
+    };
+    config.statusLabelVisible = true;
+    config.categoryVisble = false;
+    config.categories = [
+      "tech",
+      "platform & frameworks",
+      "productivity",
+      "AI & ML",
+    ];
+    config.blipFontSize = 12;
+
+    const techRadar = new TechRadar.TechRadar(blipItemsH, config);
+    // Render the Tech Radar
+    techRadar.render("#techradr-h");
+});
+</script>

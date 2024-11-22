@@ -65,7 +65,7 @@
 			</div>
 			{{ end }}
 		</div>
-		<div class="row mb-4">
+		<!-- <div class="row mb-4">
 			<div class="col-lg-4">
 				{{ .Scratch.Set "Title" "Assess" }}
 				{{ .Scratch.Set "Tag" "assess" }}
@@ -100,8 +100,10 @@
 				{{ .Scratch.Set "Count" "2" }}
 				{{ partial "home_techradar_row.html" . }}
 			</div>
-		</div>
+		</div> -->
+		{{ partial "home_techradar_chart.html" . }}
 	</div>
+	<!-- End of Tech Radar-->
 
 	<!-- Publications -->
 	<div class="container py-3">

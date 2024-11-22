@@ -1,0 +1,17 @@
+{{ $Tag := .Scratch.Get "Tag" }}
+{{ $Count := .Scratch.Get "Count" }}
+
+
+{{ $blipItems := slice }}
+{{ range (where .Site.RegularPages "Section" "garden").ByLastmod.Reverse }}
+    {{ if .Params.techradar_tags }}
+        {{ if eq (index .Params.techradar_tags 0) $Tag }}
+            {{ $status := index .Params.techradar_tags 0 }}
+            {{ $category := index .Params.techradar_tags 1 }}
+            {{ $blip := dict "name" .Title "link" .Permalink}}
+            {{ $blipItems = $blipItems | append $blip }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+{{ $blipItems = first $Count $blipItems }}
+{{ $blipItems | jsonify }}

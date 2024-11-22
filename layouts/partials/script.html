@@ -5,6 +5,7 @@
 <script src="/js/dark.js"></script>
 <script src="/js/isotope.js"></script>
 <script src="/js/mermaid.min.js"></script>
+<script src="/js/tech-radar.js"></script>
 <script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
 <script>
 var $grid = $('.blogposts').masonry({
@@ -12,8 +13,11 @@ var $grid = $('.blogposts').masonry({
   percentPosition: true,
   columnWidth: '.grid-sizer'
 });
-// layout Isotope after all images loaded
-$grid.imagesLoaded( function() {
-  $grid.masonry();
+
+document.addEventListener('DOMContentLoaded', function() {
+  // layout Isotope after all images loaded
+  $grid.imagesLoaded( function() {
+    $grid.masonry();
+  });
 });
 </script>
