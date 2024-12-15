@@ -70,7 +70,7 @@
             {{ with .Params.backlinks }}
             <hr class="dropdown-divider">            
             {{ range sort . "weight" }}
-            <a href="{{ .href }}" role="button" class="btn btn-sm btn-link mx-2">
+            <a href="{{ .href }}/" role="button" class="btn btn-sm btn-link mx-2">
                 <i class="{{ .icon }} fs-5"></i>
             {{ .text }}
             </a>
